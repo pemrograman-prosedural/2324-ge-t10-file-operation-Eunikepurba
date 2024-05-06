@@ -1,25 +1,24 @@
-#ifndef STUDENT_H
+#ifndef STUDENT_H 
 #define STUDENT_H
 
-#include "gender.h"
-#include "dorm.h"
+#include <ctype.h>
 
-/**
- * @brief define your structure, enums, globally accessible variables, and function prototypes here.
- * The actual function implementation should be defined in the corresponding source file.
- *
- */
+#define MAX_STUDENTS 100
 
-struct student_t
-{
-    char id[12];
-    char name[40];
-    char year[5];
-    enum gender_t gender;
-    struct dorm_t *dorm;
+struct student_t {
+    char id[10];
+    char name[50];
+    int year;
+    char gender[10];
+    char dorm_name[50];
 };
 
-struct student_t create_student(char *_id, char *_name, char *_year,
-                                enum gender_t _gender);
+extern struct student_t students[MAX_STUDENTS];
+extern int num_students;
+
+struct student_t create_student(char *str);
+void print_student(struct student_t mhs);
+void assign_student_to_dorm(char *student_id, char *dorm_name);
 
 #endif
+
